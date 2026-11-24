@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gapsman · The 3D engine built to be driven by an AI</title>
+<meta name="description" content="Gapsman is a plugin for ChatGPT: a 3D engine for architecture driven by an AI. You write a prompt, the machine draws the model, and renders it from material IDs.">
+<meta name="theme-color" content="#120a0d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://monili-vlr.github.io/gapsman/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gapsman · You write. The machine draws.">
+<meta property="og:description" content="A plugin for ChatGPT: the 3D engine for architecture built to be driven by an AI.">
+<meta property="og:image" content="https://monili-vlr.github.io/gapsman/img/og.jpg">
+<meta property="og:url" content="https://monili-vlr.github.io/gapsman/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="styles.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Gapsman","applicationCategory":"DesignApplication","operatingSystem":"Web, inside ChatGPT","description":"A 3D engine for architecture built to be driven by an AI, available as a plugin for ChatGPT."}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="logo" href="#top" aria-label="Gapsman, home"><img src="img/logo.svg" alt="Gapsman" width="185" height="40"></a>
+    <button class="menu" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <ul id="navlinks">
+      <li><a href="#video">Video</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#render">Render</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#limits">Limits</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn pri" href="#video">Watch the video</a>
+  </nav>
+</header>
+
+<main id="main">
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">A plugin for ChatGPT</div>
+      <h1>You write.<br><span>The machine draws.</span></h1>
+      <p class="lead">Gapsman is a 3D engine for architecture built to be driven by an AI. Describe a building, attach a plan, a sketch or a photo, and the model appears in the chat, with its reasoning written underneath.</p>
+      <div class="cta">
+        <a class="btn pri" href="#video">▶ Watch the video · 3 min</a>
+        <a class="btn sec" href="#how">How it works</a>
+      </div>
+    </div>
+    <div class="chat" aria-label="Example of a prompt and of the AI at work">
+      <div class="bar"><span class="you">You write</span><span class="typed" id="typed"></span></div>
+      <ol id="calls"></ol>
+      <div class="cot" id="cot"><b>Gapsman</b> · </div>
+      <p class="note" style="margin:10px 0 0">Example prompt and reasoning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Video</div>
+      <h2>Three minutes, from a prompt to the final image</h2>
+      <p class="lead">Every scene starts from a written prompt. The AI calls the engine, checks each step, and the model takes shape in front of you.</p>
+    </div>
+    <div class="player rv" id="player">
+      <button class="poster" id="poster" aria-label="Play the Gapsman video with voice">
+        <img src="img/render/4.webp" alt="" loading="lazy">
+        <span class="play"><i>▶</i>Play with voice</span>
+      </button>
+    </div>
+    <div class="vmeta"><span>English voice</span><span>Space pauses · F full screen · M voice on or off</span><a href="video/gapsman-video.html" target="_blank" rel="noopener">Open in a new tab ↗</a></div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">How it works</div>
+      <h2>Prompts in, models out</h2>
+      <p class="lead">There is no tool palette to learn first. Every command of the engine, from a boolean to a render, is a function that the AI calls and checks on its own.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h3>You write</h3><p>Ask in plain words, in the ChatGPT chat. Attach technical drawings, a sketch, a photo or an address when you have them.</p></div>
+      <div class="step rv"><h3>The AI drives the engine</h3><p>It reads the request, calls the Gapsman functions one by one and checks each result. The model is drawn in the chat, and the reasoning runs underneath, step by step.</p></div>
+      <div class="step rv"><h3>You review and decide</h3><p>Correct in words, or take the mouse and edit in the same viewport. Every change is a new revision with its own code, so nothing is lost.</p></div>
+    </div>
+    <div class="modes">
+      <div class="mode rv"><h3>Machine oriented</h3><p>The AI builds: it chooses the commands, measures, checks and writes what it is doing, one line at a time, under the model.</p></div>
+      <div class="mode rv"><h3>Human interface</h3><p>The same model, in the same viewport, is fully editable by hand. The next prompt starts from the model exactly as you left it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Features</div>
+      <h2>What the machine draws for you</h2>
+      <p class="lead">Each function is written as a prompt. These are examples of what you can ask.</p>
+    </div>
+    <div class="grid">
+      <article class="feat rv"><img src="img/gallery/01.webp" alt="Villa with pool made with Gapsman" loading="lazy"><div class="in"><h3>From technical drawings</h3><p>The AI reads plans and sections, traces walls, openings and rooms level by level, and builds the model. A critic then compares it with the drawings.</p><div class="q">Build this house from the plan and the section.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/18.webp" alt="Photorealistic image made from a sketch" loading="lazy"><div class="in"><h3>Camera match from a sketch</h3><p>From a sketch or a photo it finds the lines, the vanishing points and the camera, then draws the architecture in the same view.</p><div class="q">Rebuild this sketch in 3D, in the same view.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/15.webp" alt="Real city block rebuilt with Gapsman" loading="lazy"><div class="in"><h3>Real neighbourhoods</h3><p>It finds the place, takes the buildings from OpenStreetMap, checks them on the satellite photo and reads the facades along the street.</p><div class="q">Add the real context around the site.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/12.webp" alt="Organic villa made with Gapsman" loading="lazy"><div class="in"><h3>Parametric, and free</h3><p>Walls, doors, windows, slabs, roofs, stairs: everything stays parametric. It also models freely, with curves, polygons, subdivision and a little sculpting.</p><div class="q">Make the roof steeper and the windows wider.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/16.webp" alt="Interior made with Gapsman" loading="lazy"><div class="in"><h3>Real furniture</h3><p>Furniture comes from a library of real products, with brand, model and measures, such as Muuto, Vitra, Cassina, HAY, Fritz Hansen and IKEA.</p><div class="q">Furnish the living room with a Muuto sofa.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/04.webp" alt="Sunset terrace made with Gapsman" loading="lazy"><div class="in"><h3>Gardens: RPC and ivy</h3><p>Real photographs of trees and people on cards that face the camera, with seasons, and a vegetation creator that grows ivy on the walls.</p><div class="q">Add trees and people, then grow ivy on the wall.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/10.webp" alt="Curved canopy made with Gapsman" loading="lazy"><div class="in"><h3>It builds its own tools</h3><p>When a command is missing, the AI composes it from the commands it has, tests it on an empty scene and adds it to your tools.</p><div class="q">Make me a command for a spiral staircase.</div></div></article>
+      <article class="feat rv"><img src="img/gallery/05.webp" alt="Residential towers made with Gapsman" loading="lazy"><div class="in"><h3>A critic before the build</h3><p>From drawings, the AI writes a checklist and a critique first. Building starts only after you approve it.</p><div class="q">Check the model against the drawings.</div></div></article>
+      <article class="feat rv"><img src="img/render/4.webp" alt="Final image generated from a Gapsman render" loading="lazy"><div class="in"><h3>Render to final image</h3><p>Path-traced render, ID render, layer adjustments, then the final image in ChatGPT, with the same camera and geometry.</p><div class="q">Render it from the terrace and make it photographic.</div></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- RENDER -->
+<section id="render">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Render</div>
+      <h2>From the model to the final image, in four steps</h2>
+      <p class="lead">The AI places the camera and renders. Every material gets a colour and a code, so the final image keeps the same geometry.</p>
+    </div>
+    <div class="pipe rv">
+      <div>
+        <div class="tabs" role="tablist" aria-label="Render steps">
+          <button role="tab" aria-selected="true" data-k="0">1 · Render</button>
+          <button role="tab" aria-selected="false" data-k="1">2 · Render ID</button>
+          <button role="tab" aria-selected="false" data-k="2">3 · Layers</button>
+          <button role="tab" aria-selected="false" data-k="3">4 · Stable Diffusion</button>
+        </div>
+        <div class="stagebox" id="stagebox">
+          <img src="img/render/1.webp" alt="Basic path-traced render" class="base">
+          <img src="img/render/3.webp" alt="" class="top3" aria-hidden="true">
+          <img src="img/render/2.webp" alt="" class="top3 id" aria-hidden="true">
+          <img src="img/render/4.webp" alt="" class="top3 sd" aria-hidden="true">
+          <span class="lbl" id="slbl">Basic render · path tracer</span>
+        </div>
+        <label class="lever" id="lever">Post-produced layer <input type="range" min="0" max="100" value="0" id="lev" aria-label="Opacity of the post-produced layer"><span class="mono" id="levv">0</span></label>
+      </div>
+      <div class="pdesc" id="pdesc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Gallery</div>
+      <h2>Made with Gapsman</h2>
+      <p class="lead">Models and images made from a few prompts. Click an image to enlarge it.</p>
+    </div>
+    <div class="gal rv" id="gal"></div>
+  </div>
+  <dialog class="lb" id="lb" aria-label="Image viewer">
+    <button class="x" aria-label="Close">×</button>
+    <button class="nv pv" aria-label="Previous image">‹</button>
+    <button class="nv nx" aria-label="Next image">›</button>
+    <img alt="" id="lbimg"><p id="lbcap"></p>
+  </dialog>
+</section>
+
+<!-- LIMITS -->
+<section id="limits">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Limits</div>
+      <h2>What it does not do, and why</h2>
+      <p class="lead">An honest list, the same one shown inside the plugin.</p>
+    </div>
+    <div class="lims" id="lims"></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="alt">
+  <div class="wrap">
+    <div class="head rv"><div class="eyebrow">FAQ</div><h2>Questions</h2></div>
+    <div class="faq rv">
+      <details><summary>What is Gapsman?</summary><p>A 3D engine for architecture that runs as a plugin inside ChatGPT. You describe what you want in words, and the AI uses the engine to model, check and render it.</p></details>
+      <details><summary>Do I need to know 3D software?</summary><p>No. You work by writing prompts. If you want, you can also edit the model by hand in the same viewport.</p></details>
+      <details><summary>What can I attach to a prompt?</summary><p>Plans and sections, sketches, photos, and an address for the real context. The AI reads them and says what it understood before building.</p></details>
+      <details><summary>Is the model really parametric?</summary><p>Yes. Walls, doors, windows, slabs, roofs, stairs, furniture and ivy keep their parameters, so a correction in words changes the model instead of redrawing it.</p></details>
+      <details><summary>How is the final image made?</summary><p>Gapsman renders the model with a path tracer, makes an ID render with one colour and one code per material, adjusts the layers, and writes the prompt for the final image in ChatGPT, with the same camera and geometry.</p></details>
+      <details><summary>Who owns what I make?</summary><p>The models, drawings and renders you create with Gapsman are yours.</p></details>
+      <details><summary>Can I use the model to build?</summary><p>Gapsman checks geometry, not structure or building codes. A licensed professional is always needed.</p></details>
+      <details><summary>Which ChatGPT plan do I need?</summary><p>During early access Gapsman runs as a custom app, which requires a ChatGPT plan that allows custom apps. Availability will be announced on this site.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="wrap">
+    <div class="cta-box rv">
+      <div class="eyebrow">Early access</div>
+      <h2>Try Gapsman on your next project</h2>
+      <p class="lead">Gapsman is in early access, as a plugin for ChatGPT. Watch how it works, from a prompt to the final image.</p>
+      <a class="btn pri" href="#video">▶ Watch the video</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div><img src="img/logo.svg" alt="Gapsman" width="185" height="40" style="height:40px;width:auto;margin-bottom:12px"><p>The 3D engine built to be driven by an AI. A plugin for ChatGPT.</p></div>
+      <div><h4>Product</h4><ul><li><a href="#video">Video</a></li><li><a href="#features">Features</a></li><li><a href="#render">Render</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#limits">Limits</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="legal.html">Licence and credits</a></li></ul></div>
+    </div>
+    <div class="base"><span>© 2026 Gapsman. All rights reserved.</span><span>ChatGPT is a trademark of OpenAI. Gapsman is an independent product.</span></div>
+  </div>
+</footer>
+
+<script src="site.js" defer></script>
+</body>
+</html>
