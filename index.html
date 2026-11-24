@@ -32,10 +32,11 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#render">Render</a></li>
       <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#benchmark">Benchmark</a></li>
       <li><a href="#limits">Limits</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
-    <a class="btn pri" href="#video">Watch the video</a>
+    <a class="btn pri" href="#access">Request access</a>
   </nav>
 </header>
 
@@ -49,7 +50,7 @@
       <p class="lead">Gapsman is a 3D engine for architecture built to be driven by an AI. Describe a building, attach a plan, a sketch or a photo, and the model appears in the chat, with its reasoning written underneath.</p>
       <div class="cta">
         <a class="btn pri" href="#video">▶ Watch the video · 3 min</a>
-        <a class="btn sec" href="#how">How it works</a>
+        <a class="btn sec" href="#access">Request access</a>
       </div>
     </div>
     <div class="chat" aria-label="Example of a prompt and of the AI at work">
@@ -169,8 +170,44 @@
   </dialog>
 </section>
 
+<!-- BENCHMARK -->
+<section id="benchmark" class="alt">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Benchmark</div>
+      <h2>Measured where tested, estimated where not</h2>
+      <p class="lead">The same benchmark shown inside the plugin. A value is marked as measured only when a test exists. The others are cautious estimates, and will be replaced by measurements as tests grow.</p>
+    </div>
+    <div class="bench rv">
+      <div class="bars" id="bars"></div>
+      <div class="side">
+        <div class="card2"><h3>Real times</h3><p class="note">Measured on the development PC.</p><table class="tt" id="times"></table></div>
+        <div class="card2"><h3>Automatic tests</h3><p class="big">138 / 138 <span class="badge m">MEASURED</span></p><p class="note">Test suite of the plugin tools, run on 24 November 2026.</p></div>
+      </div>
+    </div>
+    <div class="specs rv">
+      <div><b>Closed solids</b><span>Modelling kernel with tolerance 1 mm. Every save checks overlaps and open solids.</span></div>
+      <div><b>Revisions</b><span>Every change is a revision with its own code, GBM-project-n, and the next prompt starts from it.</span></div>
+      <div><b>Parametric</b><span>Walls, doors, windows, slabs, roofs, columns, beams, stairs, rooms, furniture and ivy keep their parameters.</span></div>
+      <div><b>Render</b><span>Path tracer with Path, Full and Lite engines, quality 1 to 5, HDRI, layer editor and Color ID.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FUNCTIONS -->
+<section id="functions">
+  <div class="wrap">
+    <div class="head rv">
+      <div class="eyebrow">Functions</div>
+      <h2>Every command is a function the AI calls</h2>
+      <p class="lead">The functions the plugin gives to the AI, grouped by what they do. You never call them yourself: you write, the AI chooses.</p>
+    </div>
+    <div class="fns rv" id="fns"></div>
+  </div>
+</section>
+
 <!-- LIMITS -->
-<section id="limits">
+<section id="limits" class="alt">
   <div class="wrap">
     <div class="head rv">
       <div class="eyebrow">Limits</div>
@@ -182,7 +219,7 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="alt">
+<section id="faq">
   <div class="wrap">
     <div class="head rv"><div class="eyebrow">FAQ</div><h2>Questions</h2></div>
     <div class="faq rv">
@@ -193,7 +230,7 @@
       <details><summary>How is the final image made?</summary><p>Gapsman renders the model with a path tracer, makes an ID render with one colour and one code per material, adjusts the layers, and writes the prompt for the final image in ChatGPT, with the same camera and geometry.</p></details>
       <details><summary>Who owns what I make?</summary><p>The models, drawings and renders you create with Gapsman are yours.</p></details>
       <details><summary>Can I use the model to build?</summary><p>Gapsman checks geometry, not structure or building codes. A licensed professional is always needed.</p></details>
-      <details><summary>Which ChatGPT plan do I need?</summary><p>During early access Gapsman runs as a custom app, which requires a ChatGPT plan that allows custom apps. Availability will be announced on this site.</p></details>
+      <details><summary>Which ChatGPT plan do I need?</summary><p>During early access Gapsman runs as a custom app, which requires a ChatGPT plan that allows custom apps. Write to us and we will tell you what fits your account.</p></details>
     </div>
   </div>
 </section>
@@ -204,8 +241,9 @@
     <div class="cta-box rv">
       <div class="eyebrow">Early access</div>
       <h2>Try Gapsman on your next project</h2>
-      <p class="lead">Gapsman is in early access, as a plugin for ChatGPT. Watch how it works, from a prompt to the final image.</p>
-      <a class="btn pri" href="#video">▶ Watch the video</a>
+      <p class="lead">Gapsman is in early access, as a plugin for ChatGPT. Tell us who you are and what you design, and we will get back to you.</p>
+      <a class="btn pri" href="mailto:scrvlr80@gmail.com?subject=Gapsman%20early%20access">Request access</a>
+      <p class="note" style="margin-top:16px">Write to <a href="mailto:scrvlr80@gmail.com">scrvlr80@gmail.com</a></p>
     </div>
   </div>
 </section>
@@ -215,8 +253,8 @@
   <div class="wrap">
     <div class="cols">
       <div><img src="img/logo.svg" alt="Gapsman" width="185" height="40" style="height:40px;width:auto;margin-bottom:12px"><p>The 3D engine built to be driven by an AI. A plugin for ChatGPT.</p></div>
-      <div><h4>Product</h4><ul><li><a href="#video">Video</a></li><li><a href="#features">Features</a></li><li><a href="#render">Render</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#limits">Limits</a></li></ul></div>
-      <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="legal.html">Licence and credits</a></li></ul></div>
+      <div><h4>Product</h4><ul><li><a href="#video">Video</a></li><li><a href="#features">Features</a></li><li><a href="#render">Render</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#benchmark">Benchmark</a></li><li><a href="#functions">Functions</a></li><li><a href="#limits">Limits</a></li></ul></div>
+      <div><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="legal.html">Licence and credits</a></li><li><a href="mailto:scrvlr80@gmail.com">Contact</a></li></ul></div>
     </div>
     <div class="base"><span>© 2026 Gapsman. All rights reserved.</span><span>ChatGPT is a trademark of OpenAI. Gapsman is an independent product.</span></div>
   </div>

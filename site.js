@@ -101,6 +101,30 @@ lb.querySelector('.nx').onclick = () => show(cur + 1);
 lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
 lb.addEventListener('keydown', e => { if (e.key === 'ArrowRight') show(cur + 1); else if (e.key === 'ArrowLeft') show(cur - 1); });
 
+// benchmark: same values as the plugin panel (welcome.py), measured only where a test exists
+const B = [
+  ['The model builds without errors', 100, 'm', '3 of 3 local trials (box, shed, house from a plan) and the automatic tests'],
+  ['Understands the request in words', 55, 'e'],
+  ['The first result is really liked', 35, 'e'],
+  ['Complex shapes at the first try', 25, 'e'],
+  ['Copies from a drawing or a photo', 30, 'e'],
+];
+$('#bars').innerHTML = B.map(([t, v, k, b]) => `<div class="bar ${k === 'e' ? 'est' : ''}"><div class="row"><span>${t}<span class="badge ${k}">${k === 'm' ? 'MEASURED' : 'ESTIMATE'}</span></span><span>${v} %</span></div><div class="tr"><div class="fl" data-v="${v}"></div></div>${b ? `<div class="basis">${b}</div>` : ''}</div>`).join('');
+const fio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.fl').forEach(f => f.style.width = f.dataset.v + '%'); fio.unobserve(e.target); } }));
+fio.observe($('#bars'));
+$('#times').innerHTML = [['House from a plan (walls, openings, slabs)', '≈ 3 s'], ['480 px path-traced render', '6.3 s'], ['Opening the modeler in the chat', '≈ 2 s']].map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join('');
+
+// functions given to the AI (MCP tools of the plugin)
+const F = [
+  ['Modelling', [['create_model', 'a new model, opened in the chat'], ['modify_model', 'a new revision, from the model as you left it'], ['build_model', 'builds the model from the traced drawings'], ['check_model', 'checks every build step before going on']]],
+  ['Technical drawings', [['trace_plan', 'traces walls, openings and rooms from a plan'], ['trace_section', 'registers the section on the plan'], ['get_drawing_method', 'method to read plans, sections and photos']]],
+  ['Critic', [['set_checklist', 'writes what must be checked'], ['critique_model', 'compares the model with the drawings'], ['get_critique', 'reads the critique'], ['declare_critique', 'records differences and fixes, for your approval']]],
+  ['Real context', [['locate_site', 'finds the place'], ['build_context', 'buildings from OpenStreetMap, checked on satellite imagery'], ['declare_streetview', 'records what was read from the facades']]],
+  ['Render', [['add_camera', 'places a target camera'], ['render_for_chatgpt', 'path-traced render and ID render'], ['tag_entities', 'tags vehicles, vegetation and landmarks (E-nn)'], ['get_render_prompt', 'writes the prompt from the material IDs'], ['save_render_result', 'saves the final image'], ['approve_render', 'approves the image, kept as reference for next renders']]],
+  ['Tools and projects', [['create_user_tool', 'composes a new command from existing ones'], ['run_user_tool', 'runs one of your commands'], ['explain_command', 'explains any command'], ['show_viewer', 'reopens a revision in the chat'], ['get_model', 'state of a project'], ['list_projects', 'your projects']]],
+];
+$('#fns').innerHTML = F.map(([t, l]) => `<div class="fn"><h3>${t}</h3><ul>${l.map(([n, d]) => `<li><code>${n}</code>${d}</li>`).join('')}</ul></div>`).join('');
+
 // limits, same texts as the plugin panel
 const L = [
   ['Time grows with booleans', 'each Boolean recomputes the whole solid in the kernel', 'many openings or cuts in a row slow the build'],
