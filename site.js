@@ -45,7 +45,6 @@ demo();
   const go = () => { try { f.contentWindow.__gm.start(); f.contentWindow.focus(); } catch (e) { /* not ready yet */ } };
   poster.addEventListener('click', () => { poster.remove(); if (f.contentWindow && f.contentWindow.__gm) go(); else f.addEventListener('load', go, { once: true }); });
 })();
-});
 
 // render pipeline
 const STEPS = [
