@@ -154,7 +154,7 @@ body.isfs #fsx{display:inline-flex}
 </div>
 <button id="fsx" aria-label="Exit full screen">✕ Exit full screen</button>
 <div id="startov" class="off" role="button" tabindex="0" aria-label="Play with voice"><b>▶</b><span>Play with voice</span></div>
-<audio id="vo" preload="auto" src="media/50fe20c08a61.mp3"></audio>
+<audio id="vo" preload="auto" fetchpriority="high" src="media/50fe20c08a61.mp3"></audio>
 
 <script>
 (() => {
@@ -425,10 +425,10 @@ SC.push({ title: 'Presentation panel', dur: 12, ex: false, build(r) {
         <div><div class="cap" style="font-size:13px;color:var(--acc)">The 3D engine built to be driven by an AI</div><div style="font:800 40px var(--ui);margin-top:8px">Gapsman</div><div class="cap" style="font-size:13px;letter-spacing:.1em">MACHINE-ORIENTED 3D ENGINE</div>
           <p class="cap" style="font-size:14px;line-height:1.5">Describe the project, attach plans, sections or a photo. Gapsman models, checks and renders. You review, correct in words, decide.</p></div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start">${[['Closed solids, 1 mm tolerance', 'Rhino-style commands: extrude, loft, sweep, Boolean.'], ['Reads technical drawings', 'Plans, sections and elevations become a model.'], ['Real context', 'Buildings from OpenStreetMap, aligned with satellite maps.'], ['From render to photo', 'Path tracing, cameras, Color ID of materials and objects.']].map(([a, b], i) => `<div style="border:1px solid #52343f;border-radius:8px;padding:10px"><i class="mono" style="color:var(--acc);font-style:normal;font-size:11px">0${i + 1}</i><b style="display:block;font:600 13px var(--ui);margin:4px 0">${a}</b><span class="cap" style="font-size:12px">${b}</span></div>`).join('')}</div></div>
-      ${WG.map(([n]) => `<img class="gi" src="${GIMG[n]}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`).join('')}
+      ${WG.map(([n]) => `<img fetchpriority="low" class="gi" src="${GIMG[n]}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`).join('')}
     </div>
     <div style="display:flex;justify-content:space-between;padding:8px 18px"><b class="nm" style="font:600 14px var(--ui)"></b><span class="cap" style="font-size:12.5px">Click the image: how it is made</span></div>
-    <div class="th" style="display:flex;gap:6px;padding:0 18px">${WG.map(([n]) => `<img src="${GIMG[n]}" style="width:64px;height:40px;object-fit:cover;border-radius:4px;border:2px solid transparent">`).join('')}</div>
+    <div class="th" style="display:flex;gap:6px;padding:0 18px">${WG.map(([n]) => `<img fetchpriority="low" src="${GIMG[n]}" style="width:64px;height:40px;object-fit:cover;border-radius:4px;border:2px solid transparent">`).join('')}</div>
     <div style="display:flex;justify-content:space-between;align-items:center;padding:12px 18px"><span class="cap" style="font-size:13px">☐ Don't show again</span><span class="use chip on" style="font:700 14px var(--ui);padding:6px 16px">Use Gapsman</span></div>`;
   return { p, intro: p.querySelector('.intro'), gi: [...p.querySelectorAll('.gi')], th: [...p.querySelectorAll('.th img')], nm: p.querySelector('.nm'), use: p.querySelector('.use') };
 }, update(c, lt) {
@@ -533,7 +533,7 @@ function cmCam() {
 }
 const CMB = [[0, 14, 0, 10, 0, 4], [-3, 20, 2, 10, 4, 9]];
 SC.push({ title: 'Camera match from a sketch', dur: 16, ex: true, build(r) {
-  const W = 800, H = 560; const t = A(r, 'tile', 40, 64, 802, 600, `<h4>Sketch<em>example drawing</em></h4><div style="position:relative"><svg class="sk" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="background:#F6F1EA;display:block"></svg><img class="ph" src="media/1e066039eb82.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0"><span class="chip on phl" style="position:absolute;left:12px;bottom:12px;opacity:0">Photorealistic image · same view</span></div>`);
+  const W = 800, H = 560; const t = A(r, 'tile', 40, 64, 802, 600, `<h4>Sketch<em>example drawing</em></h4><div style="position:relative"><svg class="sk" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" style="background:#F6F1EA;display:block"></svg><img fetchpriority="low" class="ph" src="media/1e066039eb82.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0"><span class="chip on phl" style="position:absolute;left:12px;bottom:12px;opacity:0">Photorealistic image · same view</span></div>`);
   const cam = cmCam(); const pts = []; for (const b of CMB) for (const x of [b[0], b[1]]) for (const y of [b[2], b[3]]) for (const z of [b[4], b[5]]) pts.push(cam.raw([x, y, z]));
   const x0 = Math.min(...pts.map(p => p[0])), x1 = Math.max(...pts.map(p => p[0])), y0 = Math.min(...pts.map(p => p[1])), y1 = Math.max(...pts.map(p => p[1]));
   const s = Math.min(W / (x1 - x0), H / (y1 - y0)) * .62, ox = W / 2 - (x0 + x1) / 2 * s, oy = H * .55 - (y0 + y1) / 2 * s;
@@ -596,7 +596,7 @@ SC.push({ title: 'Real neighbourhoods', dur: 16, ex: true, build(r) {
     ${B.map(([x, y, w, h], i) => `<rect class="ob" x="${x}" y="${y}" width="${w}" height="${h}" fill="rgba(246,241,234,.45)" stroke="#F6F1EA" stroke-width="1.2" opacity="0"/>`).join('')}
     <path class="wk" d="M30 268H386V40M386 268H660" stroke="#E8B04A" stroke-width="2" stroke-dasharray="5 5" fill="none" opacity="0"/>
     ${walk.map((p, i) => `<g class="wp" opacity="0"><circle cx="${p[0]}" cy="${p[1]}" r="8" fill="#2A151D" stroke="#E8B04A" stroke-width="2"/><path d="M${p[0] - 4} ${p[1]}l3 3 5-6" stroke="#8fc59a" stroke-width="2" fill="none"/></g>`).join('')}
-  </svg><div class="v3" style="position:absolute;inset:0;opacity:0;background:#1d1418"></div><img class="real" src="media/a13acffbb2c0.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`);
+  </svg><div class="v3" style="position:absolute;inset:0;opacity:0;background:#1d1418"></div><img fetchpriority="low" class="real" src="media/a13acffbb2c0.webp" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`);
   // 3D blocks with facades (axonometric)
   const P = (x, y, z) => [389 + (x - y) * .62, 330 + (x + y) * .32 - z];
   let o = '<svg viewBox="0 0 778 563" width="778" height="563">';
@@ -809,7 +809,7 @@ SC.push({ title: 'Render, ID, layers, Stable Diffusion', dur: 30, ex: false, bui
   const W = 810, H = 540;
   const box = A(r, '', 40, 104, W, H); box.style.cssText += ';border:1px solid #52343f;border-radius:8px;overflow:hidden;background:#0e080b';
   const tabs = A(r, '', 40, 62, W, 34, ['1 Render', '2 Render ID', '3 Layers', '4 Stable Diffusion'].map(t => `<span class="chip tb" style="font:600 13px var(--ui);margin-right:8px">${t}</span>`).join(''));
-  box.innerHTML = `<img class="i1" src="media/bc9fdb6cc680.webp" style="position:absolute;inset:0;width:100%;height:100%"><img class="i3" src="media/31a986dba442.webp" style="position:absolute;inset:0;width:100%;height:100%;opacity:0"><img class="i2" src="media/b2f360da9dce.webp" style="position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 100% 0 0)">
+  box.innerHTML = `<img fetchpriority="low" class="i1" src="media/bc9fdb6cc680.webp" style="position:absolute;inset:0;width:100%;height:100%"><img fetchpriority="low" class="i3" src="media/31a986dba442.webp" style="position:absolute;inset:0;width:100%;height:100%;opacity:0"><img fetchpriority="low" class="i2" src="media/b2f360da9dce.webp" style="position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 100% 0 0)">
     <canvas class="cv" width="${W}" height="${H}" style="position:absolute;inset:0"></canvas><div class="lb" style="position:absolute;inset:0"></div>
     <span class="chip cam" style="position:absolute;left:10px;top:10px;background:#2A151Dcc">Cam 1 · target camera</span><span class="chip lo" style="position:absolute;right:10px;top:10px;background:#2A151Dcc;opacity:0;font-family:var(--mono)"></span>`;
   const lb = box.querySelector('.lb'), sx = W / 1536, sy = H / 1024;
@@ -821,7 +821,7 @@ SC.push({ title: 'Render, ID, layers, Stable Diffusion', dur: 30, ex: false, bui
     <div class="p2 card" style="margin-top:10px"><div class="lbl">Render ID · legend</div>${RLEG.map(([cl, id, d]) => `<div style="display:flex;gap:8px;align-items:center;margin:5px 0;font:12.5px var(--ui)"><i style="width:13px;height:13px;border-radius:3px;background:${cl}"></i><b class="mono" style="font-size:12px">${id}</b><span class="cap" style="font-size:12px">${d}</span></div>`).join('')}</div>
     <div class="p3 card" style="margin-top:10px"><div class="lbl">Layers</div>${['Exposure', 'Light mix · sun', 'Temperature', 'Reflection', 'Contrast', 'Saturation'].map(k => slider(k, '')).join('')}</div>`;
   const sdIn = A(r, '', 870, 62, 370, 640); sdIn.innerHTML = `<div class="lbl" style="color:var(--acc);margin-bottom:8px">Stable Diffusion receives</div>` +
-    [['media/31a986dba442.webp', 'post-produced render'], ['media/b2f360da9dce.webp', 'render ID']].map(([s_, t_]) => `<div class="tile" style="margin-bottom:10px"><h4 style="padding:5px 10px">${t_}</h4><img src="${s_}" style="display:block;width:100%;height:150px;object-fit:cover"></div>`).join('') +
+    [['media/31a986dba442.webp', 'post-produced render'], ['media/b2f360da9dce.webp', 'render ID']].map(([s_, t_]) => `<div class="tile" style="margin-bottom:10px"><h4 style="padding:5px 10px">${t_}</h4><img fetchpriority="low" src="${s_}" style="display:block;width:100%;height:150px;object-fit:cover"></div>`).join('') +
     `<div class="tile"><h4 style="padding:5px 10px">prompt</h4><div class="code" style="padding:8px 12px;font-size:12px;line-height:1.55">Same format, same camera, same geometry.<br>CONCRETE-01 = raw concrete with formwork marks<br>GLASS-01 = clear glass with reflections<br>WATER-01 = clear water · E-01 = trees</div></div>`;
   return { box, tabs: [...tabs.querySelectorAll('.tb')], i1: box.querySelector('.i1'), i2: box.querySelector('.i2'), i3: box.querySelector('.i3'), cv: box.querySelector('.cv'), lk: [...lb.querySelectorAll('.lk')], lt: [...lb.querySelectorAll('.lt')], sd, pn, p: [...pn.querySelectorAll('.card')], sls: [...pn.querySelectorAll('.sl')], pg: pn.querySelector('.pg'), sdIn, W, H, lo: box.querySelector('.lo') };
 }, update(c, lt) {
@@ -858,9 +858,9 @@ SC.push({ title: 'Render, ID, layers, Stable Diffusion', dur: 30, ex: false, bui
 SC.push({ title: 'Made with GapsMan', dur: 12, ex: false, build(r) {
   const big = A(r, '', 40, 64, 1200, 520); big.style.cssText += ';border-radius:10px;overflow:hidden;background:#0e080b';
   const IM = [['media/a13acffbb2c0.webp', 'Port and city'], ['media/e1ecff4a79d1.webp', 'Interior'], ['media/237ee5f4e2f0.webp', 'Square with a church']];
-  big.innerHTML = IM.map(([s]) => `<img class="gi" src="${s}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`).join('') + '<span class="chip cp" style="position:absolute;left:14px;bottom:14px;background:#2A151Dcc;font:600 14px var(--ui)"></span>';
+  big.innerHTML = IM.map(([s]) => `<img fetchpriority="low" class="gi" src="${s}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0">`).join('') + '<span class="chip cp" style="position:absolute;left:14px;bottom:14px;background:#2A151Dcc;font:600 14px var(--ui)"></span>';
   const strip = A(r, '', 40, 598, 1200, 100); strip.style.cssText += ';display:flex;gap:10px';
-  strip.innerHTML = [...IM.map(x => x[0]), ...WG.map(([n]) => GIMG[n])].slice(0, 9).map(s => `<img src="${s}" style="height:100px;width:124px;object-fit:cover;border-radius:6px;opacity:0" class="si">`).join('');
+  strip.innerHTML = [...IM.map(x => x[0]), ...WG.map(([n]) => GIMG[n])].slice(0, 9).map(s => `<img fetchpriority="low" src="${s}" style="height:100px;width:124px;object-fit:cover;border-radius:6px;opacity:0" class="si">`).join('');
   return { gi: [...big.querySelectorAll('.gi')], cp: big.querySelector('.cp'), si: [...strip.querySelectorAll('.si')], IM };
 }, update(c, lt) {
   const k = Math.min(2, Math.floor(lt / 3.6));
