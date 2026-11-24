@@ -37,14 +37,14 @@ async function demo() {
 demo();
 
 // video: load the player only when asked
-$('#poster').addEventListener('click', () => {
+(() => { // video: the player loads in the background, the click starts it at once with the voice
+  const box = document.getElementById('player'), poster = document.getElementById('poster');
   const f = document.createElement('iframe');
-  f.src = 'video/gapsman-video.html?autoplay=1';
-  f.title = 'Gapsman video';
-  f.allow = 'autoplay; fullscreen';
-  f.allowFullscreen = true;
-  $('#player').replaceChildren(f);
-  f.addEventListener('load', () => { try { f.contentWindow.focus(); } catch (e) { /* cross-origin */ } });
+  f.src = 'video/gapsman-video.html?autoplay=0'; f.title = 'Gapsman video'; f.allow = 'autoplay; fullscreen'; f.allowFullscreen = true; f.loading = 'lazy';
+  box.prepend(f); poster.style.zIndex = 2;
+  const go = () => { try { f.contentWindow.__gm.start(); f.contentWindow.focus(); } catch (e) { /* not ready yet */ } };
+  poster.addEventListener('click', () => { poster.remove(); if (f.contentWindow && f.contentWindow.__gm) go(); else f.addEventListener('load', go, { once: true }); });
+})();
 });
 
 // render pipeline
