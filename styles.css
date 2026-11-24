@@ -240,3 +240,11 @@ footer .base { margin-top: 36px; padding-top: 20px; border-top: 1px solid #2a182
 .fn code { display: block; font: 600 13px var(--mono); color: var(--acc2); }
 @media (max-width: 980px) { .bench { grid-template-columns: 1fr; } .specs { grid-template-columns: 1fr 1fr; } .fns { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .specs, .fns { grid-template-columns: 1fr; } }
+/* the menu has 8 links: switch to the compact menu before it wraps */
+@media (max-width: 1120px) {
+  .nav ul { display: none; }
+  .nav ul.open { display: flex; flex-direction: column; position: absolute; top: 68px; left: 0; right: 0; background: var(--bg); padding: 18px 24px; border-bottom: 1px solid var(--line); gap: 14px; }
+  .menu { display: block; }
+  .nav > .btn { display: none; }
+}
+.nav ul a { white-space: nowrap; }
