@@ -58,7 +58,7 @@ header.top { position: sticky; top: 0; z-index: 40; background: rgba(18,10,13,.8
 
 /* hero */
 .hero { position: relative; overflow: hidden; padding: 96px 0 90px; }
-.hero::before { content: ""; position: absolute; inset: 0; background: url(img/render/4.webp) center 40%/cover no-repeat; opacity: .32; }
+.hero::before { content: ""; position: absolute; inset: 0; background: url(img/render/hero.webp) center 40%/cover no-repeat; opacity: .32; }
 .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--bg) 18%, rgba(18,10,13,.75) 55%, rgba(18,10,13,.35)), linear-gradient(0deg, var(--bg), transparent 40%); }
 .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
 .hero h1 span { color: var(--acc); }
@@ -183,7 +183,9 @@ footer .base { margin-top: 36px; padding-top: 20px; border-top: 1px solid #2a182
 .doc ul { padding-left: 22px; }
 
 /* reveal on scroll */
-.rv { opacity: 0; transform: translateY(18px); transition: opacity .7s, transform .7s; }
+/* content is hidden for the fade-in only while the page script is running; without it everything stays visible */
+.rv { transition: opacity .7s, transform .7s; }
+.js .rv:not(.in) { opacity: 0; transform: translateY(18px); }
 .rv.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .rv { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } .chat .typed::after { animation: none; } }
 

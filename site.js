@@ -1,5 +1,6 @@
 (() => {
 'use strict';
+window.__siteOK = true; // tells the page the script arrived: the fade-in may hide content until it is revealed
 const $ = s => document.querySelector(s);
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
