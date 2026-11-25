@@ -23,6 +23,7 @@
 .mai-home i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:linear-gradient(100deg,#5EEAD4,#A5B4FC 34%,#F0ABFC 66%,#FDBA74);flex:none}
 .mai-home i svg{width:12px;height:12px}</style>
 <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__siteOK)document.documentElement.classList.remove('js')},2500)</script>
+<link rel="stylesheet" href="https://monili-vlr.github.io/mobile.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -114,7 +115,7 @@
       <h2>What the machine draws for you</h2>
       <p class="lead">Each function is written as a prompt. These are examples of what you can ask.</p>
     </div>
-    <div class="grid">
+    <p class="mai-swipe-hint">Swipe to see more</p><div class="grid mai-swipe">
       <article class="feat rv"><img src="img/gallery/01.webp" alt="Villa with pool made with Gapsman" loading="lazy"><div class="in"><h3>From technical drawings</h3><p>The AI reads plans and sections, traces walls, openings and rooms level by level, and builds the model. A critic then compares it with the drawings.</p><div class="q">Build this house from the plan and the section.</div></div></article>
       <article class="feat rv"><img src="img/gallery/18.webp" alt="Photorealistic image made from a sketch" loading="lazy"><div class="in"><h3>Camera match from a sketch</h3><p>From a sketch or a photo it finds the lines, the vanishing points and the camera, then draws the architecture in the same view.</p><div class="q">Rebuild this sketch in 3D, in the same view.</div></div></article>
       <article class="feat rv"><img src="img/gallery/15.webp" alt="Real city block rebuilt with Gapsman" loading="lazy"><div class="in"><h3>Real neighbourhoods</h3><p>It finds the place, takes the buildings from OpenStreetMap, checks them on the satellite photo and reads the facades along the street.</p><div class="q">Add the real context around the site.</div></div></article>
@@ -208,7 +209,7 @@
       <h2>Every command is a function the AI calls</h2>
       <p class="lead">The functions the plugin gives to the AI, grouped by what they do. You never call them yourself: you write, the AI chooses.</p>
     </div>
-    <div class="fns rv" id="fns"></div>
+    <p class="mai-swipe-hint">Swipe to see more</p><div class="fns rv mai-swipe" id="fns"></div>
   </div>
 </section>
 
@@ -220,7 +221,7 @@
       <h2>What it does not do, and why</h2>
       <p class="lead">An honest list, the same one shown inside the plugin.</p>
     </div>
-    <div class="lims" id="lims"></div>
+    <p class="mai-swipe-hint">Swipe to see more</p><div class="lims mai-swipe" id="lims"></div>
   </div>
 </section>
 
