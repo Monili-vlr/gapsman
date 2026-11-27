@@ -1,0 +1,57 @@
+# Gapsman
+
+> The 3D engine for architecture driven by an AI. You write, the machine draws, then renders it.
+
+Made by Monili VLR (https://monili-vlr.github.io/). How to get it: A plugin (MCP app) for ChatGPT and Codex, in early access. Ask for access through the Monili VLR contact form.
+Works in: ChatGPT, Codex. Example of what you write: "Build this house from the plan and the section."
+
+## Tools the AI can call (26)
+
+### Modelling
+
+- `create_model`: a new model, opened in the chat
+- `modify_model`: a new revision, from the model as you left it
+- `build_model`: builds the model from the traced drawings
+- `check_model`: checks every build step before going on
+
+### Technical drawings
+
+- `trace_plan`: traces walls, openings and rooms from a plan
+- `trace_section`: registers the section on the plan
+- `get_drawing_method`: method to read plans, sections and photos
+
+### Critic
+
+- `set_checklist`: writes what must be checked
+- `critique_model`: compares the model with the drawings
+- `get_critique`: reads the critique
+- `declare_critique`: records differences and fixes, for your approval
+
+### Real context
+
+- `locate_site`: finds the place
+- `build_context`: buildings from OpenStreetMap, checked on satellite imagery
+- `declare_streetview`: records what was read from the facades
+
+### Render
+
+- `add_camera`: places a target camera
+- `render_for_chatgpt`: path-traced render and ID render
+- `tag_entities`: tags vehicles, vegetation and landmarks (E-nn)
+- `get_render_prompt`: writes the prompt from the material IDs
+- `save_render_result`: saves the final image
+- `approve_render`: approves the image, kept as reference for next renders
+
+### Tools and projects
+
+- `create_user_tool`: composes a new command from existing ones
+- `run_user_tool`: runs one of your commands
+- `explain_command`: explains any command
+- `show_viewer`: reopens a revision in the chat
+- `get_model`: state of a project
+- `list_projects`: your projects
+
+## More
+
+- [All Monili VLR products](https://monili-vlr.github.io/llms.txt)
+- [Contact and access](https://monili-vlr.github.io/#contact)
